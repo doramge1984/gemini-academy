@@ -113,6 +113,16 @@
   #autofx .run:disabled{opacity:.5;animation:none;cursor:default;}
   #autofx .reset{background:var(--paper);border:1px solid var(--line);color:var(--navy);font-weight:600;padding:11px 18px;border-radius:14px;cursor:pointer;}
   #autofx .hint{color:var(--muted);font-size:.85rem;}
+  /* ── 봉투 발송 피날레 (인트로에서 이식) ── */
+  #autofx .imgwrap.sending .before,#autofx .imgwrap.sending .after{animation:m4cardIn 1.6s ease forwards;}
+  @keyframes m4cardIn{0%{transform:scale(1);opacity:1;}22%{transform:scale(.4);opacity:1;}30%,100%{transform:scale(0);opacity:0;}}
+  #autofx .fxenv{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(5rem,28vw,13rem);line-height:1;z-index:6;opacity:0;transform:scale(0);pointer-events:none;filter:drop-shadow(0 10px 22px rgba(0,0,0,.4));}
+  #autofx .imgwrap.sending .fxenv{animation:m4envFly 1.6s ease forwards;}
+  @keyframes m4envFly{0%,28%{transform:scale(0);opacity:0;}36%{opacity:1;}56%{transform:scale(1);opacity:1;}64%{transform:scale(1.08);}72%{transform:scale(.97);}100%{transform:translate(55%,-120%) scale(.45) rotate(14deg);opacity:0;}}
+  #autofx .fxsent{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);z-index:7;background:rgba(30,142,62,.95);color:#fff;font-weight:700;font-size:1rem;padding:9px 18px;border-radius:999px;white-space:nowrap;opacity:0;transition:.3s cubic-bezier(.2,.9,.3,1);box-shadow:0 6px 18px rgba(30,142,62,.4);}
+  #autofx .imgwrap.sent .fxsent{opacity:1;transform:translate(-50%,-50%) scale(1);}
+  #autofx .imgwrap.sending .fxbadge{opacity:0;transition:opacity .3s;}
+  @media (prefers-reduced-motion: reduce){ #autofx .imgwrap.sending .before,#autofx .imgwrap.sending .after{animation:none;} #autofx .imgwrap.sending .fxenv{display:none;} }
   .postcard-demo{
     background:#fcfcfd;border:0;border-radius:24px;
     overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/9;
@@ -387,6 +397,8 @@
             <div class="procbox"><div class="spin"></div><span>자동화 처리 중&#8230;</span><div class="bar"><i></i></div></div>
           </div>
           <div class="fxbadge">완성! ✨</div>
+          <div class="fxenv" aria-hidden="true">✉️</div>
+          <div class="fxsent">✉️ 메일로 발송 완료!</div>
         </div>
         <div class="controls">
           <button class="run" type="button">▶ 자동화 실행하기 (폼 제출!)</button>
@@ -471,25 +483,18 @@
         <div class="mock-sheet">
           <div class="r h"><div>이름</div><div>응모번호</div><div>이메일</div><div>상태</div></div>
           <div class="r"><div>김민준</div><div>#001</div><div>minj***</div><div>✅발송</div></div>
-          <div class="r"><div>이서연</div><div>#002</div><div>lsy***</div><div>✅발송</div></div>
-          <div class="r"><div>박지호</div><div>#003</div><div>pjh***</div><div>✅발송</div></div>
-          <div class="r" id="sheet-row4"><div>최유나</div><div>#004</div><div>cyn***</div><div>✅발송</div></div>
-          <div class="r new" id="sheet-row5" style="display:none"><div>정태양</div><div>#005</div><div>jty***</div><div>⏳발송중</div></div>
         </div>
-        <div class="mock-counter" id="sheet-count">총 4명 · 응모번호 #001~#004 자동 부여</div>
+        <div class="mock-counter" id="sheet-count">총 1명 · 응모번호 #001 자동 부여</div>
       </div>
       <div class="mock">
         <div class="mock-head">📁 구글 드라이브 — 엽서 PDF 자동 저장</div>
         <div class="mock-drive" id="drive-files">
           <div class="pdf"><span class="ic">📄</span>MT추억엽서_김민준_001</div>
-          <div class="pdf"><span class="ic">📄</span>MT추억엽서_이서연_002</div>
-          <div class="pdf"><span class="ic">📄</span>MT추억엽서_박지호_003</div>
-          <div class="pdf"><span class="ic">📄</span>MT추억엽서_최유나_004</div>
         </div>
       </div>
     </div>
     <div style="text-align:center;margin-top:18px;">
-      <button onclick="addSubmission()" id="sim-btn" class="run-btn" style="animation:none;font-size:.95rem;padding:12px 22px;">+ 새 제출 들어오면?</button>
+      <button onclick="replaySim()" id="sim-btn" class="run-btn" style="display:none;animation:none;font-size:.95rem;padding:12px 22px;">↻ 처음부터 다시 보기</button>
     </div>
   </div>
 </section>
@@ -942,38 +947,46 @@ function nextDemo(){
 }
 
 // ── 시트 시뮬레이션 ────────────────────────────────────────────────────────
-let simCount = 4;
+let simCount = 1;
+const SIM_NAMES=['이서연','박지호','최유나','정태양','한소희','임도현','조예린'];
+const SIM_EMAILS=['lsy***','pjh***','cyn***','jty***','hsh***','ldh***','jyr***'];
+let simTimer=null;
 function addSubmission(){
-  if(simCount >= 8){
-    var sb=document.getElementById('sim-btn');
-    if(sb){ sb.textContent='✅ 시뮬레이션 완료 — 실제 시스템은 제한 없이 계속 작동해요'; sb.disabled=true; sb.style.opacity='.7'; sb.style.cursor='default'; }
-    return;
-  }
+  if(simCount >= 8) return false;
   simCount++;
-  const names=['정태양','한소희','임도현','조예린'];
-  const emails=['jty***','hsh***','ldh***','jyr***'];
-  const ni = simCount-5;
-  const name = names[ni] || '참가자'+simCount;
-  const email = emails[ni] || 'user***';
+  const ni = simCount-2;
+  const name = SIM_NAMES[ni] || '참가자'+simCount;
+  const email = SIM_EMAILS[ni] || 'user***';
   const entry = '#'+String(simCount).padStart(3,'0');
-
-  // 시트 새 행
   const sheet = document.querySelector('.mock-sheet');
   const row = document.createElement('div');
   row.className = 'r new';
   row.innerHTML = `<div>${name}</div><div>${entry}</div><div>${email}</div><div>⏳발송중</div>`;
   sheet.appendChild(row);
-  document.getElementById('sheet-count').textContent = `총 ${simCount}명 · 응모번호 #001~#${String(simCount).padStart(3,'0')} 자동 부여`;
-
-  // 드라이브 새 파일
+  document.getElementById('sheet-count').textContent = `총 ${simCount}명 · 응모번호 #001~${entry} 자동 부여`;
   const drive = document.getElementById('drive-files');
   const pdf = document.createElement('div');
   pdf.className = 'pdf new';
   pdf.innerHTML = `<span class="ic">📄</span>MT추억엽서_${name}_${String(simCount).padStart(3,'0')}`;
   drive.appendChild(pdf);
-
-  // 1초 후 상태 변경
-  setTimeout(()=>{ row.querySelector('div:last-child').textContent='✅발송'; },1200);
+  setTimeout(()=>{ const c=row.querySelector('div:last-child'); if(c) c.textContent='✅발송'; },1100);
+  return true;
+}
+function startSim(){
+  clearInterval(simTimer);
+  const btn=document.getElementById('sim-btn'); if(btn) btn.style.display='none';
+  simTimer=setInterval(function(){
+    if(!addSubmission()){ clearInterval(simTimer); if(btn) btn.style.display=''; }
+  }, 1500);
+}
+function replaySim(){
+  const sheet=document.querySelector('.mock-sheet');
+  sheet.querySelectorAll('.r').forEach(function(r,i){ if(!r.classList.contains('h') && i>1) r.remove(); });
+  const drive=document.getElementById('drive-files');
+  Array.prototype.slice.call(drive.children).forEach(function(c,i){ if(i>=1) c.remove(); });
+  document.getElementById('sheet-count').textContent='총 1명 · 응모번호 #001 자동 부여';
+  simCount=1;
+  startSim();
 }
 
 // ── Gemini 프롬프트 복사 ───────────────────────────────────────────────────
@@ -1095,12 +1108,18 @@ function copyCode(id, btn){
     setTimeout(function(){
       proc.classList.remove('on'); wrap.classList.add('done');
       setTimeout(function(){
-        badge.classList.add('on'); reset.style.display = ''; run.style.display = 'none'; busy = false;
+        badge.classList.add('on'); run.style.display = 'none';
+        setTimeout(function(){
+          wrap.classList.add('sending');
+          setTimeout(function(){
+            wrap.classList.add('sent'); reset.style.display = ''; busy = false;
+          }, 1600);
+        }, 950);
       }, 500);
     }, 1100);
   }
   function rst(){
-    wrap.classList.remove('done'); badge.classList.remove('on');
+    wrap.classList.remove('done','sending','sent'); badge.classList.remove('on');
     reset.style.display = 'none'; run.style.display = ''; run.disabled = false; busy = false;
   }
   run.onclick = play; wrap.onclick = play; reset.onclick = rst;
@@ -1109,23 +1128,15 @@ function copyCode(id, btn){
 // ── 무인 운영 목업: 버튼 없이 스스로 제출이 쌓이게 자동 재생 ──
 (function(){
   var sec = document.getElementById('scale');
-  if(!sec || typeof addSubmission !== 'function') return;
-  var started = false;
-  function start(){
-    if(started) return; started = true;
-    var t = setInterval(function(){
-      if(typeof simCount !== 'undefined' && simCount >= 8){ clearInterval(t); return; }
-      addSubmission();
-    }, 2500);
-  }
+  if(!sec || typeof startSim !== 'function') return;
+  var done=false;
+  function go(){ if(done) return; done=true; startSim(); }
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ start(); io.disconnect(); } });
+      entries.forEach(function(e){ if(e.isIntersecting){ go(); io.disconnect(); } });
     }, { threshold: 0.3 });
     io.observe(sec);
-  } else {
-    start();
-  }
+  } else { go(); }
 })();
 </script>
 
