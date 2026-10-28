@@ -18,7 +18,7 @@
     --navy-2:#34496b;
     --teal:#1e8e3e;
     --terra:#1967d2;
-    --gold:#e8a020;
+    --gold:#217bfe;
     --ink:#2f2a24;
     --muted:#7a7064;
     --line:#e8eaed;
@@ -45,7 +45,7 @@
   .nav-links{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;}
   .nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.86rem;font-weight:600;padding:6px 11px;border-radius:999px;transition:.18s;}
   .nav-links a:hover{background:rgba(255,255,255,.18);color:#fff;}
-  .nav-links a{width:32px;height:32px;padding:0;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#4285f4,#9b72cb);color:#fff;font-weight:600;font-size:.95rem;box-shadow:0 3px 10px rgba(25,103,210,.35);}
+  .nav-links a{width:32px;height:32px;padding:0;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,#217bfe,#078efb);color:#fff;font-weight:600;font-size:.95rem;box-shadow:0 3px 10px rgba(25,103,210,.35);}
   .nav-links a{animation:navGlow 3.6s ease-in-out infinite;}
   .nav-links a:nth-child(2){animation-delay:.3s;} .nav-links a:nth-child(3){animation-delay:.6s;} .nav-links a:nth-child(4){animation-delay:.9s;} .nav-links a:nth-child(5){animation-delay:1.2s;} .nav-links a:nth-child(6){animation-delay:1.5s;}
   @keyframes navGlow{0%,100%{box-shadow:0 3px 10px rgba(25,103,210,.35),0 0 8px rgba(66,133,244,.35);}50%{box-shadow:0 3px 12px rgba(25,103,210,.45),0 0 20px rgba(110,168,255,.75);}}
@@ -67,7 +67,7 @@
   .tent-path{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.35;}
   .stamp-badge{display:inline-flex;align-items:center;gap:9px;border:1px solid #dadce0;color:#5f6368;padding:6px 14px;border-radius:999px;font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.5);}
   .hero h1{font-size:clamp(2rem,3.4vw,3rem);line-height:1.12;margin:20px 0 14px;color:var(--navy);font-weight:600;letter-spacing:-.035em;}
-  .hero h1 .hl{background:linear-gradient(100deg,#4285f4,#9b72cb 40%,#d96570 72%,#f2994a);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero h1 .hl{background:linear-gradient(100deg,#217bfe,#078efb 40%,#ac87eb 72%,#ee4d5d);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero p.sub{font-size:1.15rem;color:var(--navy-2);max-width:680px;margin:0 0 26px;}
   .meta-row{display:flex;gap:12px;flex-wrap:wrap;}
   .chip{background:var(--paper);border:0;border-radius:22px;padding:10px 15px;font-size:.9rem;color:var(--navy-2);font-weight:600;box-shadow:0 4px 14px rgba(36,53,81,.05);}
@@ -103,7 +103,7 @@
   #autofx .procbox{position:relative;z-index:2;background:rgba(36,53,81,.85);color:#fff;padding:16px 22px;border-radius:14px;text-align:center;min-width:230px;}
   #autofx .procbox span{font-weight:600;font-size:.95rem;}
   #autofx .bar{height:7px;background:rgba(255,255,255,.25);border-radius:99px;margin-top:11px;overflow:hidden;}
-  #autofx .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--terra),#4285f4);border-radius:99px;transition:width 1s linear;}
+  #autofx .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--terra),#217bfe);border-radius:99px;transition:width 1s linear;}
   #autofx .spin{width:26px;height:26px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;margin:0 auto 8px;animation:fxsp .7s linear infinite;}
   @keyframes fxsp{to{transform:rotate(360deg);}}
   #autofx .fxbadge{position:absolute;top:12px;right:12px;background:var(--teal);color:#fff;font-weight:600;padding:7px 14px;border-radius:99px;box-shadow:0 6px 16px rgba(30,142,62,.4);opacity:0;transform:translateY(-6px);transition:.3s;z-index:5;}
@@ -122,6 +122,7 @@
   #autofx .fxsent{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.9);z-index:7;background:rgba(30,142,62,.95);color:#fff;font-weight:700;font-size:1rem;padding:9px 18px;border-radius:999px;white-space:nowrap;opacity:0;transition:.3s cubic-bezier(.2,.9,.3,1);box-shadow:0 6px 18px rgba(30,142,62,.4);}
   #autofx .imgwrap.sent .fxsent{opacity:1;transform:translate(-50%,-50%) scale(1);}
   #autofx .imgwrap.sending .fxbadge{opacity:0;transition:opacity .3s;}
+  #autofx .imgwrap.sending .fxph,#autofx .imgwrap.sent .fxph{opacity:0;transition:opacity .2s;}
   @media (prefers-reduced-motion: reduce){ #autofx .imgwrap.sending .before,#autofx .imgwrap.sending .after{animation:none;} #autofx .imgwrap.sending .fxenv{display:none;} }
   .postcard-demo{
     background:#fcfcfd;border:0;border-radius:24px;
@@ -210,11 +211,11 @@
   #step2.stepcard{animation-delay:.5s;} #step3.stepcard{animation-delay:1s;} #step4.stepcard{animation-delay:1.5s;} #step5.stepcard{animation-delay:2s;} #step6.stepcard{animation-delay:2.5s;}
   @media (prefers-reduced-motion:reduce){.stepcard[id^="step"]{animation:none;}}
   .stepcard .head{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
-  .stepcard .num{flex:none;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#4285f4,#9b72cb);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:1.15rem;box-shadow:0 5px 14px rgba(25,103,210,.35);}
+  .stepcard .num{flex:none;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#217bfe,#078efb);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:1.15rem;box-shadow:0 5px 14px rgba(25,103,210,.35);}
   .stepcard .head h3{margin:0;color:var(--navy);font-size:1.2rem;}
   .stepcard ol,.stepcard ul{margin:8px 0 0;padding-left:20px;color:var(--ink);}
   .stepcard li{margin-bottom:7px;}
-  .stepcard .note{background:#f8f9fa;border-left:4px solid #4285f4;border-radius:0 10px 10px 0;padding:12px 16px;margin-top:14px;font-size:.92rem;color:var(--navy-2);}
+  .stepcard .note{background:#f8f9fa;border-left:4px solid #217bfe;border-radius:0 10px 10px 0;padding:12px 16px;margin-top:14px;font-size:.92rem;color:var(--navy-2);}
   .stepcard .warn{background:#fff1f0;border-left:4px solid #e05555;border-radius:0 10px 10px 0;padding:12px 16px;margin-top:14px;font-size:.92rem;color:#7a2020;}
 
   /* COLLAPSIBLE */
@@ -233,7 +234,7 @@
   @keyframes missionfade{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
 
   /* GEMINI BOX */
-  .gemini-box{background:linear-gradient(135deg,#e9f2ff,#e6f8ef);border:2px dashed #4285f4;border-radius:18px;padding:24px 26px;margin:16px 0;box-shadow:0 6px 20px rgba(66,133,244,.1);}
+  .gemini-box{background:linear-gradient(135deg,#e9f2ff,#e6f8ef);border:2px dashed #217bfe;border-radius:18px;padding:24px 26px;margin:16px 0;box-shadow:0 6px 20px rgba(66,133,244,.1);}
   .gemini-box .gh{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
   .gemini-box .gi{flex:none;width:42px;height:42px;border-radius:14px;background:#1967d2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 5px 14px rgba(66,133,244,.35);}
   .gemini-box h3{margin:0;color:var(--navy);font-size:1.18rem;}
@@ -247,7 +248,7 @@
   .codewrap .copy.ok{background:rgba(30,142,62,.8);border-color:#1e8e3e;}
   pre{background:#1f2d44;color:#e6edf3;border-radius:14px;padding:22px 20px 22px 20px;overflow:auto;font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:.82rem;line-height:1.6;margin:0;box-shadow:var(--shadow);}
   pre .c{color:#8aa0bd;}
-  pre .k{color:#4285f4;}
+  pre .k{color:#217bfe;}
   pre .s{color:#a5d6a7;}
   pre .n{color:#79c0ff;}
   .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;background:var(--cream-2);padding:1px 6px;border-radius:5px;font-size:.86rem;color:var(--terra);}
@@ -261,7 +262,7 @@
   details.tip .tip-body{padding:0 0 14px;color:var(--navy-2);font-size:.95rem;}
 
   /* CLOSING */
-  .closing{background:linear-gradient(120deg,#4285f4,#9b72cb 40%,#d96570 72%,#f2994a);color:#fff;border-radius:22px;padding:44px 38px;text-align:center;box-shadow:var(--shadow);}
+  .closing{background:linear-gradient(120deg,#217bfe,#078efb 40%,#ac87eb 72%,#ee4d5d);color:#fff;border-radius:22px;padding:44px 38px;text-align:center;box-shadow:var(--shadow);}
   .closing h2{color:#fff;font-size:1.8rem;margin:0 0 12px;}
   .closing p{color:#e7f1f0;max-width:640px;margin:0 auto;font-size:1.05rem;}
   .closing .ach-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:24px 0;}
@@ -280,7 +281,7 @@
 
   .hero{position:relative;}
   .hero::before{content:"";position:absolute;inset:-40px 0 -10px;z-index:0;pointer-events:none;
-    background:radial-gradient(620px 360px at 22% 30%, rgba(233,242,255,.95) 0%, rgba(233,242,255,0) 70%),radial-gradient(560px 340px at 68% 22%, rgba(238,226,248,.85) 0%, rgba(238,226,248,0) 70%),radial-gradient(600px 360px at 82% 62%, rgba(254,235,235,.8) 0%, rgba(254,235,235,0) 70%),radial-gradient(620px 380px at 38% 78%, rgba(254,249,231,.9) 0%, rgba(254,249,231,0) 70%);}
+    background:radial-gradient(620px 360px at 22% 30%, rgba(233,242,255,.95) 0%, rgba(233,242,255,0) 70%),radial-gradient(560px 340px at 68% 22%, rgba(238,226,248,.85) 0%, rgba(238,226,248,0) 70%),radial-gradient(600px 360px at 82% 62%, rgba(254,235,235,.8) 0%, rgba(254,235,235,0) 70%),radial-gradient(620px 380px at 38% 78%, rgba(224,240,255,.9) 0%, rgba(224,240,255,0) 70%);}
   .hero > *{position:relative;z-index:1;}
   .hero > .tent-path{position:absolute;inset:0;width:100%;height:100%;z-index:1;}
 
@@ -550,7 +551,7 @@
               <li>슬라이드 오른쪽 클릭 → <b>배경 변경</b> → 이미지 → 준비된 엽서 PNG 업로드</li>
               <li>텍스트박스 3개 삽입 (삽입 → 텍스트박스). <b>정확히 아래 문자열</b>로 입력:</li>
             </ol>
-            <div style="background:#fef9e7;border-left:4px solid #4285f4;border-radius:0 12px 12px 0;padding:14px 18px;margin:12px 0;font-size:.95rem;">
+            <div style="background:#fef9e7;border-left:4px solid #217bfe;border-radius:0 12px 12px 0;padding:14px 18px;margin:12px 0;font-size:.95rem;">
               <div style="font-weight:600;margin-bottom:8px;color:var(--navy);">필수 텍스트 표식 (이 문자열 그대로 — 띄어쓰기 포함)</div>
               <span class="mono" style="font-size:1rem;">{{이름}}</span> &nbsp; <span class="mono" style="font-size:1rem;">{{소감}}</span> &nbsp; <span class="mono" style="font-size:1rem;">{{응모번호}}</span>
             </div>
@@ -661,7 +662,7 @@
         <div class="gi">✨</div>
         <h3>코드를 못 짜도 괜찮아요 — Gemini로 코드 만들기</h3>
       </div>
-      <p>아래 프롬프트를 <a href="https://gemini.google.com" target="_blank" style="color:#4285f4;font-weight:600;">Gemini</a>에 <b>그대로 붙여넣으면</b>, <b>4단계에 들어갈 Apps Script 코드</b>를 거의 완성된 형태로 만들어 줍니다. "AI에게 시켜서 자동화 코드를 받아오는" 경험 그 자체예요.</p>
+      <p>아래 프롬프트를 <a href="https://gemini.google.com" target="_blank" style="color:#217bfe;font-weight:600;">Gemini</a>에 <b>그대로 붙여넣으면</b>, <b>4단계에 들어갈 Apps Script 코드</b>를 거의 완성된 형태로 만들어 줍니다. "AI에게 시켜서 자동화 코드를 받아오는" 경험 그 자체예요.</p>
       <div class="prompt-box" id="gemini-prompt" style="margin-top:2.4em;">구글 폼이 제출되면 슬라이드 템플릿을 복사해 {{이름}}과 {{소감}} 항목을 채우고, 대체 텍스트(제목 또는 설명)가 '사진자리'인 도형을 사용자가 업로드한 사진 파일로 바꾼 뒤, PDF로 변환하여 신청자에게 메일로 자동 발송하는 Apps Script를 만들어줘.
 
 [필수 조건]

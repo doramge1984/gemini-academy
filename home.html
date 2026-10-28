@@ -12,7 +12,7 @@
 <style>
   :root{
     --cream:#ffffff;--cream-2:#f1f3f4;--paper:#ffffff;
-    --navy:#243551;--navy-2:#34496b;--teal:#1e8e3e;--terra:#1967d2;--gold:#e8a020;
+    --navy:#243551;--navy-2:#34496b;--teal:#1e8e3e;--terra:#1967d2;--gold:#217bfe;
     --ink:#2f2a24;--muted:#7a7064;--line:#e8eaed;--shadow:0 14px 40px rgba(36,53,81,.14);
   }
   *{box-sizing:border-box;}
@@ -24,7 +24,7 @@
   .hero{padding:52px 0 20px;text-align:center;}
   .stamp-badge{display:inline-flex;align-items:center;gap:9px;color:#5f6368;padding:6px 14px;border-radius:999px;font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;border:0;background:rgba(255,255,255,.75);box-shadow:0 1px 2px rgba(60,64,67,.08);}
   .hero h1{font-size:clamp(2rem,3.4vw,3rem);line-height:1.15;margin:18px 0 12px;color:var(--navy);font-weight:600;letter-spacing:-.035em;}
-  .hero h1 .hl{background:linear-gradient(100deg,#4285f4,#9b72cb 40%,#d96570 72%,#f2994a);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero h1 .hl{background:linear-gradient(100deg,#217bfe,#078efb 40%,#ac87eb 72%,#ee4d5d);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero p{font-size:1.08rem;color:var(--navy-2);max-width:700px;margin:0 auto;}
 
   section{padding:22px 0 30px;}
@@ -43,7 +43,7 @@
     background:
       radial-gradient(135% 95% at 50% -25%, rgba(255,255,255,.96), rgba(255,255,255,0) 60%),
       linear-gradient(157deg,#ffffff 0%,#f8f9fa 55%,#e8eaed 100%);
-    box-shadow:0 12px 30px rgba(36,53,81,.12), inset 0 0 0 1px rgba(232,160,32,.35);
+    box-shadow:0 12px 30px rgba(36,53,81,.12), inset 0 0 0 1px rgba(33,123,254,.35);
     transition:box-shadow .3s ease, transform .3s ease;}
   /* 좌측 메탈릭 바 */
   .face::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;z-index:2;
@@ -53,7 +53,7 @@
     background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.7) 50%,transparent 100%);transform:rotate(9deg);opacity:0;}
   .flip:hover .face::after{animation:sheen 1.15s ease;}
   @keyframes sheen{0%{left:-85%;opacity:0;}12%{opacity:.95;}100%{left:140%;opacity:0;}}
-  .flip:hover .face{box-shadow:0 24px 52px rgba(36,53,81,.2), inset 0 0 0 1px rgba(232,160,32,.72), 0 0 32px -8px var(--accent,var(--teal));}
+  .flip:hover .face{box-shadow:0 24px 52px rgba(36,53,81,.2), inset 0 0 0 1px rgba(33,123,254,.72), 0 0 32px -8px var(--accent,var(--teal));}
   .back{transform:rotateY(180deg);}
   /* 뒤집힘 상태에 따라 보이지 않는 면은 클릭을 받지 않음 */
   .flip.flipped .front{pointer-events:none;}
@@ -63,7 +63,7 @@
   .flip.flipped:hover .flip-inner{transform:rotateY(180deg);}
 
   .no{position:relative;z-index:2;font-size:.72rem;font-weight:600;letter-spacing:.2em;
-    background:linear-gradient(90deg,#b06000,#e6cd7a 45%,#b06000);-webkit-background-clip:text;background-clip:text;color:transparent;}
+    background:linear-gradient(90deg,#217bfe,#078efb 45%,#217bfe);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .no::before{content:"✦ ";}
   /* 앞면 */
   .front .ftitle{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;flex:1;}
@@ -74,7 +74,7 @@
   .back p{margin:0 0 12px;font-size:.9rem;color:var(--navy-2);}
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
   .tag{font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:999px;color:var(--navy-2);
-    background:linear-gradient(180deg,#ffffff,#e8eaed);border:1px solid rgba(232,160,32,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.6);}
+    background:linear-gradient(180deg,#ffffff,#e8eaed);border:1px solid rgba(33,123,254,.45);box-shadow:inset 0 1px 0 rgba(255,255,255,.6);}
   .cardfoot{position:relative;z-index:2;display:flex;flex-direction:column;gap:9px;}
   .cardbtn{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;gap:7px;width:100%;cursor:pointer;border:0;overflow:hidden;
     font-family:inherit;font-weight:600;font-size:.94rem;padding:12px 16px;border-radius:14px;color:#fff;letter-spacing:.01em;
@@ -83,7 +83,7 @@
   /* 버튼: 같은 색 계열 그라데이션 (네이비/검정 제거) */
   .m1 .cardbtn{background:#174ea6;}
   .m2 .cardbtn{background:#1967d2;}
-  .m3 .cardbtn{background:#4285f4;}
+  .m3 .cardbtn{background:#217bfe;}
   .m4 .cardbtn{background:#8ab4f8;}
   .cardbtn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;transform:skewX(-18deg);pointer-events:none;
     background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);}
@@ -96,7 +96,7 @@
   /* module accent colors */
   .m1{--accent:#174ea6;}
   .m2{--accent:#1967d2;}
-  .m3{--accent:#4285f4;}
+  .m3{--accent:#217bfe;}
   .m4{--accent:#8ab4f8;}
   /* 카드 면 색을 위쪽 흐름 지도와 매치 */
   .m1 .face{background:#ffffff;}
@@ -107,12 +107,12 @@
   /* ── 흐름 띠 & 상세 토글 ── */
   .flowmap{display:flex;align-items:stretch;flex-wrap:wrap;gap:10px;margin:2px 0 58px;}
   .fstep{flex:1 1 150px;min-width:140px;display:flex;align-items:center;gap:10px;
-    background:linear-gradient(180deg,#ffffff,#f8f9fa);border:1px solid rgba(232,160,32,.4);
+    background:linear-gradient(180deg,#ffffff,#f8f9fa);border:1px solid rgba(33,123,254,.4);
     border-left:4px solid var(--accent,var(--teal));border-radius:14px;padding:10px 12px;box-shadow:0 4px 12px rgba(36,53,81,.06);}
   /* 단계별 밝은 컬러 (네이비 최소화) */
   .fstep.m1{background:#ffffff;--accent:#174ea6;}
   .fstep.m2{background:#ffffff;--accent:#1967d2;}
-  .fstep.m3{background:#ffffff;--accent:#4285f4;}
+  .fstep.m3{background:#ffffff;--accent:#217bfe;}
   .fstep.m4{background:#ffffff;--accent:#8ab4f8;}
   .fnum{flex:none;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font-size:.82rem;font-weight:600;color:#fff;
     background:var(--accent,var(--teal));box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 2px 6px rgba(36,53,81,.14);}
@@ -150,7 +150,7 @@
   .cta-btn:hover{transform:translateY(-1px);}
   .cta-btn.teal{background:var(--teal);}
   .cta-btn.pad{background:#fff;color:#1967d2;border:1px solid #c6dafc;box-shadow:0 1px 2px rgba(60,64,67,.10);}
-  .cta-btn.intro-btn{background:linear-gradient(100deg,#4285f4,#9b72cb 40%,#d96570 72%,#f2994a);}
+  .cta-btn.intro-btn{background:linear-gradient(100deg,#217bfe,#078efb 40%,#ac87eb 72%,#ee4d5d);}
 
   .padbox{margin-top:16px;border:0;border-radius:22px;overflow:hidden;box-shadow:0 6px 20px rgba(36,53,81,.08);background:#F4F4F4;}
   .padbox iframe{width:100%;height:640px;display:block;border:0;}
@@ -162,7 +162,7 @@
 
   .hero{position:relative;}
   .hero::before{content:"";position:absolute;inset:-40px 0 -10px;z-index:0;pointer-events:none;
-    background:radial-gradient(620px 360px at 22% 30%, rgba(233,242,255,.95) 0%, rgba(233,242,255,0) 70%),radial-gradient(560px 340px at 68% 22%, rgba(238,226,248,.85) 0%, rgba(238,226,248,0) 70%),radial-gradient(600px 360px at 82% 62%, rgba(254,235,235,.8) 0%, rgba(254,235,235,0) 70%),radial-gradient(620px 380px at 38% 78%, rgba(254,249,231,.9) 0%, rgba(254,249,231,0) 70%);}
+    background:radial-gradient(620px 360px at 22% 30%, rgba(233,242,255,.95) 0%, rgba(233,242,255,0) 70%),radial-gradient(560px 340px at 68% 22%, rgba(238,226,248,.85) 0%, rgba(238,226,248,0) 70%),radial-gradient(600px 360px at 82% 62%, rgba(254,235,235,.8) 0%, rgba(254,235,235,0) 70%),radial-gradient(620px 380px at 38% 78%, rgba(224,240,255,.9) 0%, rgba(224,240,255,0) 70%);}
   .hero > *{position:relative;z-index:1;}
 </style>
 </head>
@@ -299,9 +299,9 @@
 <section>
   <div class="wrap">
     <div class="eyebrow">Community</div>
-    <h2 class="sec">🧡 우리 아카데미 패들렛</h2>
+    <h2 class="sec">💙 우리 아카데미 패들렛</h2>
     <p class="lead">질문·자료·결과물을 여기에 함께 모아요. 화면이 안 보이면 아래 버튼으로 새 창에서 열 수 있어요.</p>
-    <a class="cta-btn pad" href="https://padlet.com/JA_Korea/2026-gemini-academy-b764lse6h0ho7u3g" target="_blank" rel="noopener">🧡 패들렛 열기</a>
+    <a class="cta-btn pad" href="https://padlet.com/JA_Korea/2026-gemini-academy-b764lse6h0ho7u3g" target="_blank" rel="noopener">💙 패들렛 열기</a>
     <div class="padbox">
       <iframe src="https://padlet.com/embed/b764lse6h0ho7u3g" allow="camera;microphone;geolocation;clipboard-write;encrypted-media;fullscreen" title="제미나이 아카데미 패들렛"></iframe>
     </div>

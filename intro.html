@@ -15,7 +15,7 @@
     --ink:#202124; --ink-2:#3c4043; --muted:#5f6368; --muted-2:#80868b;
     --line:#e8eaed; --surface:#f8f9fa; --surface-2:#f1f3f4; --white:#ffffff;
     --cream:#ffffff;
-    --grad:linear-gradient(92deg,#4285f4,#9b72cb 40%,#d96570 72%,#f2994a);
+    --grad:linear-gradient(92deg,#217bfe,#078efb 40%,#ac87eb 72%,#ee4d5d);
     --bub:clamp(40px,3.4vw,54px);
   }
   *{box-sizing:border-box;}
@@ -100,7 +100,7 @@
   .node.done .bub .ic{opacity:0;}
   .node.done .bub .ck{opacity:1; transform:none; color:#1e8e3e;}
   .node.done .lb{color:var(--ink-2);}
-  .node.on .bub{background:linear-gradient(100deg,#4285f4,#9b72cb 40%,#d96570 72%,#f2994a); border-color:transparent; color:#fff;
+  .node.on .bub{background:linear-gradient(100deg,#217bfe,#078efb 40%,#ac87eb 72%,#ee4d5d); border-color:transparent; color:#fff;
     transform:scale(1.14); box-shadow:0 6px 20px rgba(155,114,203,.38);}
   .node.on .bub .ic{opacity:1;} .node.on .bub .ck{opacity:0; transform:scale(.4);}
   .node.on .lb{color:var(--ink); font-weight:600;}
@@ -150,7 +150,7 @@
   .ba-flow .bstep.on{opacity:1; border-color:rgba(25,103,210,.5); color:var(--navy); box-shadow:0 5px 14px rgba(25,103,210,.26); transform:translateY(-2px);}
   .ba-flow i{font-style:normal; color:var(--muted); opacity:.45; flex:none; transition:.22s; font-size:clamp(.6rem,1vw,.78rem);}
   .ba-flow i.on{color:#1967d2; opacity:1;}
-  .ba-run{z-index:5; background:linear-gradient(100deg,#4285f4,#9b72cb 40%,#d96570 72%,#f2994a); color:#fff; border:0; border-radius:999px; padding:10px 26px; font-weight:700; font-size:clamp(.88rem,1.6vw,1.02rem); cursor:pointer; box-shadow:0 8px 22px rgba(130,90,150,.42); transition:.15s;}
+  .ba-run{z-index:5; background:linear-gradient(100deg,#217bfe,#078efb 40%,#ac87eb 72%,#ee4d5d); color:#fff; border:0; border-radius:999px; padding:10px 26px; font-weight:700; font-size:clamp(.88rem,1.6vw,1.02rem); cursor:pointer; box-shadow:0 8px 22px rgba(130,90,150,.42); transition:.15s;}
   .ba-run:hover{transform:scale(1.05); filter:brightness(1.06);}
   @media (prefers-reduced-motion: reduce){ .shot .ba.run::after{display:none;} .shot .ba.run{animation:none;} .shot .ba.run>.ba-aft{animation:none; opacity:1;} .ba.run ~ .ba-env{animation:none;} }
   .badge{position:absolute; top:14px; left:14px; z-index:2;
@@ -350,11 +350,11 @@
     transform:translateY(10px); transition:transform .7s cubic-bezier(.2,.9,.3,1);}
   .frame.m .mc-in{transform:none;}
   .q-tag{display:inline-flex; align-items:center; gap:.6em; font-size:max(.72rem,1.9cqi); font-weight:800; letter-spacing:.22em; color:#7a5bb0;}
-  .q-tag::after{content:""; width:6cqi; height:2px; border-radius:2px; background:linear-gradient(90deg,#9b72cb,transparent);}
+  .q-tag::after{content:""; width:6cqi; height:2px; border-radius:2px; background:linear-gradient(90deg,#078efb,transparent);}
   .q-who{margin:2.4cqi 0 0; font-size:4.7cqi; color:var(--ink-2); line-height:1.35; letter-spacing:-.01em;}
   .q-who b{color:var(--ink); font-weight:800; background:linear-gradient(transparent 62%,rgba(155,114,203,.22) 62%);}
   .q-goal{margin:1.2cqi 0 0; font-size:8.4cqi; font-weight:800; color:var(--ink); line-height:1.14; letter-spacing:-.02em; word-break:keep-all;}
-  .q-goal .gr{background:linear-gradient(100deg,#4285f4 0%,#9b72cb 42%,#d96570 74%,#f2994a 100%); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .q-goal .gr{background:linear-gradient(100deg,#217bfe 0%,#078efb 42%,#ac87eb 74%,#ee4d5d 100%); -webkit-background-clip:text; background-clip:text; color:transparent;}
   .q-rew{width:100%; margin-top:5cqi; padding-top:3cqi; border-top:1px solid rgba(155,114,203,.25);}
   .q-rew .lb{font-size:max(.7rem,1.7cqi); font-weight:700; letter-spacing:.08em; color:var(--muted);}
   .q-tiles{margin-top:1.8cqi; display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:1.4cqi;}
@@ -362,7 +362,7 @@
   .q-tiles .im{aspect-ratio:1; border-radius:1.6cqi; overflow:hidden; background:#fff; border:2px solid #fff; box-shadow:0 3px 12px rgba(72,60,40,.14);}
   .q-tiles img{width:100%; height:100%; object-fit:cover; object-position:top; display:block;}
   .q-tiles .n{position:absolute; top:-.7em; left:-.5em; width:1.9em; height:1.9em; border-radius:50%; display:grid; place-items:center;
-    font-size:max(.62rem,1.5cqi); font-weight:700; color:#fff; background:linear-gradient(120deg,#4285f4,#9b72cb 45%,#d96570); box-shadow:0 2px 6px rgba(0,0,0,.15);}
+    font-size:max(.62rem,1.5cqi); font-weight:700; color:#fff; background:linear-gradient(120deg,#217bfe,#078efb 45%,#ac87eb); box-shadow:0 2px 6px rgba(0,0,0,.15);}
   /* 보상 상자: 등장(1회) + 빛이 1→5로 은은하게 이동(반복) */
   .q-tiles figure:nth-child(1){--i:0} .q-tiles figure:nth-child(2){--i:1} .q-tiles figure:nth-child(3){--i:2}
   .q-tiles figure:nth-child(4){--i:3} .q-tiles figure:nth-child(5){--i:4} .q-tiles figure:nth-child(6){--i:5}
@@ -427,7 +427,7 @@
         <p class="q-who">오늘 나는 <b>과대표 · 동아리 총무</b></p>
         <p class="q-goal">이번 MT<br><span class="gr">무사히 성사</span>시키기</p>
         <div class="q-rew"><span class="lb">클리어 보상 · 오늘 내가 만들어 가는 것</span>
-          <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="qgr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4285f4"/><stop offset=".45" stop-color="#9b72cb"/><stop offset=".75" stop-color="#d96570"/><stop offset="1" stop-color="#f2994a"/></linearGradient></defs></svg>
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="qgr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#217bfe"/><stop offset=".45" stop-color="#078efb"/><stop offset=".75" stop-color="#ac87eb"/><stop offset="1" stop-color="#ee4d5d"/></linearGradient></defs></svg>
           <div class="q-tiles">
             <figure><div class="im"><img src="sample1.jpg" alt=""></div><svg class="tr" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><rect x="1.2" y="1.2" width="97.6" height="97.6" rx="13" pathLength="100"/></svg><span class="n">1</span><figcaption>마스코트</figcaption></figure>
             <figure><div class="im"><img src="form-screen.png" alt=""></div><svg class="tr" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><rect x="1.2" y="1.2" width="97.6" height="97.6" rx="13" pathLength="100"/></svg><span class="n">2</span><figcaption>수요조사 폼</figcaption></figure>
